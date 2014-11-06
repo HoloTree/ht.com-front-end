@@ -72,11 +72,14 @@ jQuery( function () {
                 'index.html' === app.stripTrailingSlash(urlLast )
                 || app.stripTrailingSlash( urlLast )  === app.stripTrailingSlash( protocolSplit[1] )
             ) {
-                if ( '' == hash || hash == '#' || hash == 'page=1') {
+                if ( '' == hash || hash == '#' ) {
 
-                    app.getPosts( 0 );
-                    app.pagination( 1 );
+                    app.getSinglePost( app.params.frontPageID, '', '#home-page' );
                 }
+            }
+            else if ( hash == 'page=1' ) {
+                app.getPosts( 0 );
+                app.pagination( 1 );
             }
             else {
                 if ( url.indexOf("taxonomy") > -1 ) {
@@ -143,12 +146,16 @@ jQuery( function () {
     /**
      * Get a single post
      *
-     * @param ID The post ID
+     * @param int ID The post ID
+     * @param string  slug Page slug. use to get post by slug. Overrides ID arg.
+     * @params string Template ID. If not set #post will be used, unless post type is page, in which case #page is used.
      *
      * @since 0.1.0
      */
-    app.getSinglePost = function( ID, slug ) {
-        if ( undefined !== slug ) {
+    app.getSinglePost = function( ID, slug, template ) {
+
+
+        if ( undefined !== slug && '' !== slug ) {
             url = app.params.rootURL + '/posts?filter[name]=' + slug;
         }
         else {
@@ -164,8 +171,17 @@ jQuery( function () {
                     post = post[0];
                 }
 
+                if ( undefined == template ) {
+                    if ( 'page' === post.type ) {
+                        template = '#page';
+                    }
+                    else {
+                        template = '#post';
+                    }
+                }
+
                 app.emptyContainer();
-                var source = $('#post').html();
+                var source = $( template ).html();
                 var template = Handlebars.compile(source);
                 var html = template(post);
 

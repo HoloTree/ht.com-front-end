@@ -76,6 +76,7 @@
     </article>
 </script>
 
+<!--template for single posts-->
 <script id="post" type="text/x-handlebars-template">
 
     <article id="post-{{ID}}" data-id="{{ID}}" class="post post-{{ID}} row">
@@ -97,6 +98,54 @@
                         {{{link this link name "term-link"}}}
                     {{/categories}}
                 </div>
+        </footer>
+    </article>
+</script>
+
+<!--template for home page-->
+<script id="home-page" type="text/x-handlebars-template">
+
+    <article id="post-{{ID}}" data-id="{{ID}}" class="post post-{{ID}} row">
+        <div class="featured-image">
+            <img src="{{featured_image.guid}}" alt="{{featured_image.title}}" />
+        </div>
+        <header>
+            <h3 class="post-title">{{title}}</h3>
+            <div class="entry-meta">
+                <p>By: {{author.name}} on {{dateFormat date}}</p>
+            </div>
+        </header>
+
+        <div class="entry-content">{{{content}}}</div>
+        <footer>
+
+            <div class="post-categories">
+                {{#categories terms.category}}
+                {{{link this link name "term-link"}}}
+                {{/categories}}
+            </div>
+        </footer>
+    </article>
+</script>
+
+<script id="page" type="text/x-handlebars-template">
+
+    <article id="post-{{ID}}" data-id="{{ID}}" class="post post-{{ID}} row">
+        <div class="featured-image">
+            <img src="{{featured_image.guid}}" alt="{{featured_image.title}}" />
+        </div>
+        <header>
+            <h3 class="post-title">{{title}}</h3>
+        </header>
+
+        <div class="entry-content">{{{content}}}</div>
+        <footer>
+
+            <div class="post-categories">
+                {{#categories terms.category}}
+                {{{link this link name "term-link"}}}
+                {{/categories}}
+            </div>
         </footer>
     </article>
 </script>
@@ -135,7 +184,8 @@
             postsPerPage: 10,
             mainContainer: '#main',
             mainMenuContainer: "#main-menu",
-            mainMenuName: "themenu"
+            mainMenuName: "themenu",
+            frontPageID: 4,
         };
         window.Josie.params = params;
 </script>

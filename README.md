@@ -5,24 +5,23 @@ Local Install:
 
 * cd to wherever you want to store this.
 
-*Clone this repo:
+* Clone this repo:
 
-`https://github.com/HoloTree/ht.com-front-end.git holotree-site`
+    `https://github.com/HoloTree/ht.com-front-end.git holotree-site`
 
-CD into new Dir:
+* CD into new Dir:
 
-`cd holotree-site`
+    `cd holotree-site`
 
 * Checkout the "htcom" branch. This is the branch we are using, only mess with master if wishing to push a change to the original repo.
 
-`git checkout htcom`
+    `git checkout htcom`
 
 * Install express
-
- `npm install express`
+    `npm install express`
 
 * Start server
- `node server`
+    `node server`
 
 * Site should now exist at http://localhost:10101
 
