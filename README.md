@@ -18,9 +18,11 @@ Local Install:
     `git checkout htcom`
 
 * Install express
+
     `npm install express`
 
 * Start server
+
     `node server`
 
 * Site should now exist at http://localhost:10101
