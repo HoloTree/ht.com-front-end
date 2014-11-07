@@ -18,36 +18,45 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+    <div id="masthead" class="fixed">
+        <div class="tab-bar">
 
-<div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-
-        <nav class="tab-bar">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-            </section>
 
             <section class="middle tab-bar-section title-section">
-                <h1 class="page-title"><a href="/">HoloTree: Team Decision making</a></h1>
+                <h1 class="page-title"><a href="/">HoloTree: Team Decision Making</a></h1>
             </section>
 
 
-        </nav>
+        </div>
 
-        <!-- Off Canvas Menu -->
-        <aside class="left-off-canvas-menu">
-            <!-- whatever you want goes here -->
-            <ul id="main-menu">
+        <!-- Menu -->
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
 
+                </li>
+
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
-        </aside>
 
-        <!--Main content gets put in here-->
-        <div id="main"></div>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right" id="main-menu">
 
+                </ul>
+
+                <!-- Left Nav Section -->
+                <ul class="left">
+                    <li><a href="http://holotree.net">Login To HoloTree</a></li>
+                </ul>
+            </section>
+        </nav>
     </div>
-</div>
-<div id="site-footer"></div>
+
+    <!--Main content gets put in here-->
+    <div id="main"></div>
+
+    <div id="site-footer"></div>
 
 <!--Templates go here -->
 <!--@todo move to subdir and pull them in via ajax?-->
@@ -175,6 +184,7 @@
 <script type="text/javascript" src="/js/lib/foundation.min.js"></script>
 <script type="text/javascript" src="/js/lib/handlebars.js"></script>
 <script type="text/javascript" src="/js/josie.js"></script>
+<script type="text/javascript" src="/js/htcom.js"></script>
 <!--Initialization for Josie App-->
 <script type="text/javascript">
         var params = {
