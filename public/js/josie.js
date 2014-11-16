@@ -28,36 +28,27 @@ jQuery( function () {
 
     };
 
-    /**
-     * Events object
-     *
-     * @since 0.2.0
-     */
     app.events = {
 
         clickHandler : function( event ) {
             event.preventDefault();
             link  = event.currentTarget;
+            title = $( link ).attr( 'title' );
             ID = $( link ).attr( 'data-id' );
             href = $( link ).attr( 'href' );
-
             href = href.split( app.params.siteURL );
             href = href[1];
-
-            if ( ID == app.params.blogPageID   ) {
-                app.getPosts( 0 );
-                app.pagination( 1 );
-            }
-            else if ( $( link ).hasClass( 'post-link' ) ) {
+            href = document.location.protocol + '//' + document.location.host + '/' + href;
+            if ( $( link ).hasClass( 'post-link' ) ) {
                 app.getSinglePost( ID );
-                history.pushState( null, null, href );
+
             }
-            else if ( $( link ).hasClass( 'term-link' )  ) {
+            if ( $( link ).hasClass( 'term-link' )  ) {
                 app.term( ID );
                 taxonomy = $(this).attr( 'taxonomy');
-                history.pushState( null, null,  href );
             }
 
+            history.replaceState( null, title, href );
         },
 
         /**
@@ -76,14 +67,14 @@ jQuery( function () {
                 'index.html' === app.stripTrailingSlash(urlLast )
                 || app.stripTrailingSlash( urlLast )  === app.stripTrailingSlash( protocolSplit[1] )
             ) {
-                if ( '' == hash || hash == '#' ) {
-
-                    app.getSinglePost( app.params.frontPageID, '', '#home-page' );
+                if ( hash == '') {
+                    app.getSinglePost( app.params.frontPageID );
                 }
-            }
-            else if ( hash == 'page=1' ) {
-                app.getPosts( 0 );
-                app.pagination( 1 );
+                else if (  hash == '#' || hash == 'page=1' ) {
+
+                    app.getPosts( 0 );
+                    app.pagination( 1 );
+                }
             }
             else {
                 if ( url.indexOf("taxonomy") > -1 ) {
@@ -94,7 +85,6 @@ jQuery( function () {
                     app.getPosts( urlLast );
                 }
                 else {
-                    console.log( urlLast);
                     app.getSinglePost(  '', urlLast );
                 }
             }
